@@ -1,0 +1,2 @@
+Testing Content Reading Using Spring
+I am using Spring RMI to achieve this

@@ -1,0 +1,34 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- Beans Declaration -->
+
+    <bean id="readContentUsingFileReader" class="bsg.assignment.filereader.ReadContentUsingFileReader"/>
+    <bean id="readContentUsingFileStream" class="bsg.assignment.filereader.ReadContentUsingFileStream"/>
+
+
+    <bean id="readContent" class="bsg.assignment.server.ReadContent">
+        <property name="readContentUsingFileReader" ref="readContentUsingFileReader"/>
+        <property name="readContentUsingFileStream" ref="readContentUsingFileStream"/>
+    </bean>
+
+    <!-- Server Declaration -->
+    <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
+
+        <!-- serviceName represents Service Name -->
+        <property name="serviceName" value="ReadContent"/>
+
+        <!-- service represents Object(Service Impl) -->
+        <property name="service" ref="readContent"/>
+
+        <!-- serviceInterface represents Service Interface exposed -->
+        <property name="serviceInterface" value="bsg.assignment.server.IReadContent"/>
+
+        <!-- defaults to 1099 -->
+        <property name="registryPort" value="1099"/>
+
+    </bean>
+
+</beans>

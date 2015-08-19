@@ -1,0 +1,7 @@
+This is simple Spring Socket Program.
+I used Spring RMI to read the content of the file reside in a server.
+
+We can run the app in 3 different modes
+1. Client Mode
+2. Serve Mode
+3. Both client and server mode.
